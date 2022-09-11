@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import util
-app = Flask(__name__)
-@app.route('/get_location_names')
+application = Flask(__name__)
+@application.route('/get_location_names')
 def get_location_names():
     response = jsonify({
         'locations': util.load_saved_artifacts()
@@ -11,7 +11,7 @@ def get_location_names():
 
 
 
-@app.route('/ahmedabad_model', methods=['POST'])
+@application.route('/ahmedabad_model', methods=['POST'])
 def predict_home_price_ahmedabad():
     bedroom = int(request.form['bedroom'])
     area = float(request.form['area'])
@@ -25,7 +25,7 @@ def predict_home_price_ahmedabad():
     return response
 
 
-@app.route('/Mumbai_model', methods=['POST'])
+@application.route('/Mumbai_model', methods=['POST'])
 def predict_home_price_mumbai():
     bedroom = int(request.form['bedroom'])
     area = float(request.form['area'])
@@ -38,7 +38,7 @@ def predict_home_price_mumbai():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/Delhi_model', methods=['POST'])
+@application.route('/Delhi_model', methods=['POST'])
 def predict_home_price_delhi():
     bedroom = int(request.form['bedroom'])
     area = float(request.form['area'])
@@ -51,7 +51,7 @@ def predict_home_price_delhi():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/Bangalore_model', methods=['POST'])
+@application.route('/Bangalore_model', methods=['POST'])
 def predict_home_price_bangalore():
     bedroom = int(request.form['bedroom'])
     area = float(request.form['area'])
@@ -64,7 +64,7 @@ def predict_home_price_bangalore():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/Kolkata_model', methods=['POST'])
+@application.route('/Kolkata_model', methods=['POST'])
 def predict_home_price_kolkata():
     bedroom = int(request.form['bedroom'])
     area = float(request.form['area'])
@@ -82,4 +82,4 @@ def predict_home_price_kolkata():
 if __name__ == "__main__":
     print("Starting Python Flask Server For Home Price Prediction...")
     util.load_saved_artifacts()
-    app.run()
+    application.run()
