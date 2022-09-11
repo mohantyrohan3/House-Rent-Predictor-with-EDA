@@ -1,6 +1,13 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify , render_template
 import util
 application = Flask(__name__)
+@application.route('/')
+def home():
+    util.load_saved_artifacts()
+    return render_template('index.html')
+
+
+
 @application.route('/get_location_names')
 def get_location_names():
     response = jsonify({
@@ -82,4 +89,4 @@ def predict_home_price_kolkata():
 if __name__ == "__main__":
     print("Starting Python Flask Server For Home Price Prediction...")
     util.load_saved_artifacts()
-    application.run()
+    application.run(debug=True)
