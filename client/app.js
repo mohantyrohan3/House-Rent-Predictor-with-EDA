@@ -21,15 +21,24 @@ function getBHKValue() {
 
 function onClickedEstimatePrice() {
     console.log("Estimate price button clicked");
+    var location = document.getElementById("uiLocations");
     var sqft = document.getElementById("uiSqft");
     var bhk = getBHKValue();
     var bathrooms = getBathValue();
     var estPrice = document.getElementById("uiEstimatedPrice");
-  
-    var url = "http://127.0.0.1:5000/ahmedabad_model"; //Use this if you are NOT using nginx which is first 7 tutorials
+    
+    var url1 = "http://127.0.0.1:5000/"; //Use this if you are NOT using nginx which is first 7 tutorials
+    if (location.value=='Ahmedabad'){
+        url1 += "ahmedabad";
+    }
+    else{
+        url1 += location.value;
+    }
+    
+    url1 += '_model';
     // var url = "/api/predict_home_price"; // Use this if  you are using nginx. i.e tutorial 8 and onwards
   
-    $.post(url, {
+    $.post(url1, {
         bedroom: bhk,
         area: parseFloat(sqft.value), 
         bathroom: bathrooms,

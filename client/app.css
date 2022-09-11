@@ -132,7 +132,10 @@ body, html {
   height: 100%;
 }
 h1 {
-    width:500px;
+    width:600px;
+    padding-bottom: 20px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-top: 20px;
     margin: 0 auto;
     background:#68e221
     text-align:center;
